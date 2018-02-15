@@ -10,7 +10,7 @@ import constant
 MODULE_NAME = 'melody_rnn_generate'
 BUNDLE_CONFIG = 'basic_rnn'
 BUNDLE_FILE = '/tmp/MagenServer/server/magenta_modules/basic_rnn.mag'
-OUTPUT_DIR = '/tmp/t/MagenServer/server/generate'
+OUTPUT_DIR = '/tmp/MagenServer/server/generate'
 NUM_OUTPUT = 1
 NUM_STEPS = 256
 PRIMER_MIDI = ''
