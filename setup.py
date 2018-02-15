@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-	name='MagentaServer',
+	name='MagenServer',
 	version='1.0',
 	packages=['server','server.main_bp'],
 	include_package_data = True,
