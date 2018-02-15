@@ -1,0 +1,5 @@
+recursive-include server/main_bp/static
+recursive-include server/main_bp/templates
+recursive-include server/generate
+recursive-include server/magenta_modules
+recursive-include server/uploads
