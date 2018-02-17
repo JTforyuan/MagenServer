@@ -54,12 +54,11 @@ def api_receivefile(filename=None):
 		
 		return resp
 	else:
-	# 先通过api将文件转换成midi文件，
-		upload_path = constant.WAV_UPLOAD_FOLDER + filename
-		midiname = wav2midi(filename)
-		generate_midi(constant.MIDI_UPLOAD_FOLDER + '/' + midiname)
-		gen_file = get_generatefile()
-		return send_from_directory(constant.GENERATE_DIR, midiname)
+		upload_path = constant.WAV_UPLOAD_FOLDER + filename # 获取上传文件路径
+		midiname = wav2midi(filename) # 将wav格式文件转换成midi文件，并返回文件名
+		generate_midi(constant.MIDI_UPLOAD_FOLDER + '/' + midiname) # 生成音乐旋律
+		gen_file = get_generatefile() # 获取生成的文件名
+		return send_from_directory(constant.GENERATE_DIR, gen_file)
 	
 	
 @main_bp.route('/hello')
