@@ -58,6 +58,7 @@ def api_receivefile(filename=None):
 		midiname = wav2midi(filename) # 将wav格式文件转换成midi文件，并返回文件名
 		generate_midi(constant.MIDI_UPLOAD_FOLDER + '/' + midiname) # 生成音乐旋律
 		gen_file = get_generatefile() # 获取生成的文件名
+		print constant.GENERATE_DIR + gen_file
 		return send_from_directory(constant.GENERATE_DIR, gen_file)
 	
 	
