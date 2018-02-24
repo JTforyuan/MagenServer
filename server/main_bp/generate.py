@@ -39,7 +39,10 @@ def get_generatefile():
 			return f
 		elif(index == len(filelist)):
 			return 'No match file'
-			
+
+'''
+	filename : wav格式文件名
+'''			
 def wav2midi(filename):
 	os.chdir(constant.WAV_UPLOAD_FOLDER)
 	command = TRANS_NAME + ' ' + filename + ' -d ' + PLUGIN_NAME + ' -w ' + TRANS_TO

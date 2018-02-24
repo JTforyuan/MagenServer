@@ -44,7 +44,7 @@ def api_receivefile(filename=None):
 		# files[] 的索引就是上传文件的name参数，如curl命令：-F "filename=@test.txt" filename就是name参数
 		file = request.files['filename']
 		filepath = save_uploadfile(file, constant.WAV_UPLOAD_FOLDER)
-		midiname = wav2midi(filename) # 将wav格式文件转换成midi文件，并返回文件名
+		midiname = wav2midi(file.filename) # 将wav格式文件转换成midi文件，并返回文件名
 		generate_midi(constant.MIDI_UPLOAD_FOLDER + '/' + midiname) # 生成音乐旋律
 		gen_file = get_generatefile() # 获取生成的文件名
 		data = {
