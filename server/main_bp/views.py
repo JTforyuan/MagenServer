@@ -45,18 +45,28 @@ def api_receivefile(filename=None):
 		file = request.files['filename']
 		filepath = save_uploadfile(file, constant.WAV_UPLOAD_FOLDER)
 		midiname = wav2midi(file.filename) # 将wav格式文件转换成midi文件，并返回文件名
-		generate_midi(constant.MIDI_UPLOAD_FOLDER + '/' + midiname) # 生成音乐旋律
-		gen_file = get_generatefile() # 获取生成的文件名
-		data = {
-			'generate_file' : gen_file,
-			'upload_file' : filepath,
-			'upload_state' : 'successed',
-			'file_num' : 1
-		}
-		js = json.dumps(data)
-		resp = Response(js, status=200, mimetype='application/json')
-		
-		return resp
+		if midiname:
+			generate_midi(constant.MIDI_UPLOAD_FOLDER + '/' + midiname) # 生成音乐旋律
+			gen_file = get_generatefile() # 获取生成的文件名
+			data = {
+				'generate_file' : gen_file,
+				'upload_file' : file.filename,
+				'upload_state' : 'successed',
+				'file_num' : 1
+			}
+			js = json.dumps(data)
+			resp = Response(js, status=200, mimetype='application/json')
+			
+			return resp
+		else:
+			data = {
+				'upload_state' : 'failed'
+			}
+			
+			js = json.dumps(data)
+			resp = Response(js, status=404, mimetype='application/json')
+			
+			return resp
 	else:
 		return send_from_directory(constant.GENERATE_DIR, filename)
 	

@@ -48,10 +48,12 @@ def wav2midi(filename):
 	command = TRANS_NAME + ' ' + filename + ' -d ' + PLUGIN_NAME + ' -w ' + TRANS_TO
 	os.system(command)
 	midiname = re.sub(r'wav$', 'mid', filename)
-	shutil.move(constant.WAV_UPLOAD_FOLDER + '/' + midiname, constant.MIDI_UPLOAD_FOLDER + '/' + midiname)
-	os.chdir(constant.SERVER_ROOT_DIR)
-	
-	return midiname
+	if os.path.exists(midiname):
+		shutil.move(constant.WAV_UPLOAD_FOLDER + '/' + midiname, constant.MIDI_UPLOAD_FOLDER + '/' + midiname)
+		os.chdir(constant.SERVER_ROOT_DIR)
+		return midiname
+	else:
+		return False
 
 
 
